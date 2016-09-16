@@ -1,0 +1,10 @@
+
+{% if thread_list %}
+    <ul>
+    {% for thread in thread_list %}
+        <li><a href="{% url 'imgboard:thread' thread.id %}">{{ thread.thread_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No threads are available.</p>
+{% endif %}

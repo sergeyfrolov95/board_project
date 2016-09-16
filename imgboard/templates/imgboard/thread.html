@@ -1,0 +1,9 @@
+<h2>{{ thread.thread_name }}</h2>
+<a href="{% url 'imgboard:index' %}">Back to threads</a>
+<ul>
+{% for post in thread.post_set.all %}
+	<h4>{{ post.date_published }}</h4>
+	<h3>{{ post.post_text }}</h3>
+---------------------------------
+{% endfor %}
+</ul>
