@@ -1,5 +1,12 @@
 <h2>{{ thread.thread_name }}</h2>
 <a href="{% url 'imgboard:index' %}">Back to threads</a>
+<div>
+	<form method="post">
+  	{% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Send" />
+  </form>
+</div>
 <ul>
 {% for post in thread.post_set.all %}
 	<h4>{{ post.date_published }}</h4>
