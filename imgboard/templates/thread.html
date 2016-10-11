@@ -1,9 +1,20 @@
+{% load staticfiles %}
 <h2>{{ thread.thread_name }}</h2>
 <a href="{% url 'imgboard:index' %}">Back to threads</a>
+<div>
+	<form method="post" enctype="multipart/form-data">
+  	{% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Send" />
+  </form>
+</div>
 <ul>
 {% for post in thread.post_set.all %}
 	<h4>{{ post.date_published }}</h4>
 	<h3>{{ post.post_text }}</h3>
+	{% if post.pic %}
+		<img src="{{ post.pic.url }}">
+  {% endif %}
 ---------------------------------
 {% endfor %}
 </ul>

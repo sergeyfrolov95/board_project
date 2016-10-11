@@ -9,3 +9,4 @@ class Post(models.Model):
 	thread = models.ForeignKey(Thread)
 	date_published = models.DateTimeField('date published')
 	post_text = models.CharField(max_length=300)
+	pic = models.ImageField(upload_to='pics', blank=True)
