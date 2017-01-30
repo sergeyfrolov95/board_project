@@ -1,3 +1,11 @@
+<h2> {{ "Welcome to the board. Create your own theme or chose one from list." }} </h2>
+<div>
+  <form method="post">
+    {% csrf_token %}
+    {{ form }}
+   <input type="submit" value="Create"/>
+ </form=>
+</div>
 {% if thread_list %}
     <ul>
     {% for thread in thread_list %}

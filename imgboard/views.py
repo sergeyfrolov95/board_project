@@ -4,25 +4,36 @@ from django.views.generic.base import View
 from django.utils import timezone
 
 from .models import Thread, Post
-from .forms import PostForm
+from .forms import PostForm, ThreadForm
 
-def index(request):
-	thread_list = Thread.objects.all()
-	context = {'thread_list': thread_list}
-	return render(request, 'index.html', context)
+class IndexView(View):
+	thread_form = ThreadForm
+	initial = {'key': 'value'}
 
-def thread(request, thread_id):
-	thread = get_object_or_404(Thread, pk=thread_id)
-	context = {
-		'thread': thread,
-	}
-	return render(request, 'thread.html', context)
+	def get(self, request, **kwargs):
+		form = self.thread_form(initial=self.initial)
+		thread_list = Thread.objects.all()
+		context = {'thread_list': thread_list,
+					'form': form,
+		}
+		return render(request, 'index.html', context)
+
+	def post(self, request):
+		form = self.thread_form(request.POST)
+		if form.is_valid():
+			t = Thread(thread_name=form.cleaned_data['thread_name'])
+			t.save()
+			return HttpResponseRedirect('')
+		else:
+			return HttpResponseRedirect('')
+
+
 
 class ThreadView(View):
 	post_form = PostForm
 	initial = {'key': 'value'}
 
-	def get(self, request, thread_id, **keargs):
+	def get(self, request, thread_id, **kwargs):
 		thread = get_object_or_404(Thread, pk=thread_id)
 		form = self.post_form(initial=self.initial)
 		context = {
