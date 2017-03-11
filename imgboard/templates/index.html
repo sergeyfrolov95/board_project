@@ -1,4 +1,11 @@
-<h2> {{ "Welcome to the board. Create your own theme or chose one from list." }} </h2>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'imgboard/index_style.css' %}" </>
+
+<div class="body">
+<div class="header">
+   <p>{{ "Welcome to the board. Create your own theme or chose one from list." }}</p>
+</div>
+<div class="body-content">
 <div>
   <form method="post">
     {% csrf_token %}
@@ -7,11 +14,13 @@
  </form=>
 </div>
 {% if thread_list %}
-    <ul>
+    <div>
     {% for thread in thread_list %}
-        <li><a href="{% url 'imgboard:thread' thread.id %}">{{ thread.thread_name }}</a></li>
+        <div id="thread_list"><a href="{% url 'imgboard:thread' thread.id %}">{{ thread.thread_name }}</a></div>
     {% endfor %}
-    </ul>
+    </div>
 {% else %}
     <p>No threads are available.</p>
 {% endif %}
+</div>
+</div>

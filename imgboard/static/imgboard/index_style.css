@@ -1,0 +1,38 @@
+body {
+  background: white url("images/backim.jpg");
+  background-size: 100%;
+  -moz-background-size: 100%;
+  -webkit-background-size: 100%;
+  -o-background-size: 100%;
+  background-attachment: fixed;
+}
+
+#thread_list {
+  width: 400px;
+  height: 100px;
+  background: rgb(179, 179, 179);
+}
+
+a {
+  color: green;
+}
+p {
+  margin-left: 2%;
+}
+
+.header {
+  background-color: green;
+  color:white;
+  text-align:left;
+  height: 110px;
+  font-size: 230%;
+}
+.body {
+  font-family: Helvetica Narrow, sans-serif;
+
+}
+.body-content{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

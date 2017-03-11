@@ -1,5 +1,9 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'imgboard/thread_style.css' %}" </>
+
 {% load staticfiles %}
-<h2>{{ thread.thread_name }}</h2>
+<div class="body">
+<div class="header"><p>{{ thread.thread_name }}</p></div>
 <a href="{% url 'imgboard:index' %}">Back to threads</a>
 <div>
 	<form method="post" enctype="multipart/form-data">
@@ -18,3 +22,4 @@
 ---------------------------------
 {% endfor %}
 </ul>
+</div>
