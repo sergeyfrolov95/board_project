@@ -23,9 +23,9 @@ class IndexView(View):
 		if form.is_valid():
 			t = Thread(thread_name=form.cleaned_data['thread_name'])
 			t.save()
-			return HttpResponseRedirect('')
+			return HttpResponseRedirect('/board')
 		else:
-			return HttpResponseRedirect('')
+			return HttpResponseRedirect('/board')
 
 
 
@@ -49,6 +49,6 @@ class ThreadView(View):
 				date_published=timezone.now(), thread_id=kwargs['thread_id'])
 			p.pic = request.FILES.get('picture', '')
 			p.save()
-			return HttpResponseRedirect('')
+			return HttpResponseRedirect('/board/thread' + kwargs['thread_id'])
 		else:
-			return HttpResponseRedirect('')
+			return HttpResponseRedirect('/board/thread' + kwargs['thread_id'])

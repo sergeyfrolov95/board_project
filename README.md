@@ -1,6 +1,6 @@
 # Imageboard written on Django framework.
 
-This imageboard approach to discuss news or other different things. In threads (themes to discuss) you can post comments and share pictures with messages.
+This imageboard approach to discuss news or other different things. In threads (themes to discuss) you can post comments and share pictures in messages.
 
 ## Prerequisites
 
@@ -8,7 +8,7 @@ You will need Python 2.7 interpreter and latest version of Django framework to b
 
 ## Running
 
-In board-project do next steps:
+In board_project do next steps:
 
 First of all you need to migrate models and generate db.sqlite3 file. To do it run this command:
 
