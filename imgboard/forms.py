@@ -5,4 +5,4 @@ class PostForm(forms.Form):
 	picture = forms.ImageField(label='', required=False)
 
 class ThreadForm(forms.Form):
-	thread_name = forms.CharField(label='Name of new thread', max_length=30)
+	thread_name = forms.CharField(label='Name of new thread', max_length=50)
