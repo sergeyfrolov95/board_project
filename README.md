@@ -29,7 +29,7 @@ Once server is running go to next page in browser:
 On that page you can add new theme using form or choose one of existing.
 On thread page you can find messages of different users and post your own message attaching picture if you want. To do it use form on the top of page.
 
-##TODO
+## TODO
 
 - Better UI
 - File type validation
