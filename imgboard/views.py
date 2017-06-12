@@ -6,13 +6,14 @@ from django.utils import timezone
 from .models import Thread, Post
 from .forms import PostForm, ThreadForm
 
+
 class IndexView(View):
 	thread_form = ThreadForm
 	initial = {'key': 'value'}
 
 	def get(self, request, **kwargs):
 		form = self.thread_form(initial=self.initial)
-		thread_list = Thread.objects.all()
+		thread_list = Thread.objects.all().order_by('-bump_thread', '-id')
 		context = {'thread_list': thread_list,
 					'form': form,
 		}
@@ -49,6 +50,11 @@ class ThreadView(View):
 				date_published=timezone.now(), thread_id=kwargs['thread_id'])
 			p.pic = request.FILES.get('picture', '')
 			p.save()
+			thread = get_object_or_404(Thread, pk=kwargs['thread_id'])
+			if p.post_text == 'bump' or p.post_text == 'Bump!' or p.post_text == 'Bump':
+				thread.bump_thread += 1
+				thread.save()
+			print thread.bump_thread
 			return HttpResponseRedirect('/board/thread' + kwargs['thread_id'])
 		else:
 			return HttpResponseRedirect('/board/thread' + kwargs['thread_id'])

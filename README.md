@@ -8,7 +8,7 @@ You will need Python 2.7 interpreter and latest version of Django framework to b
 
 ## Running
 
-In board_project do next steps:
+In board_project directory do next steps:
 
 First of all you need to migrate models and generate db.sqlite3 file. To do it run this command:
 
@@ -28,11 +28,12 @@ Once server is running go to next page in browser:
 
 On that page you can add new theme using form or choose one of existing.
 On thread page you can find messages of different users and post your own message attaching picture if you want. To do it use form on the top of page.
+You can offer one of threads on the top of thread list by using keyword "bump" (or "Bump", "Bump!" etc) in a post message.
 
 ## TODO
 
-- Better UI
-- File type validation
-- File size validation
-- Deleting old threads
-- Bump system
+- [ ] Better UI
+- [ ] File type validation
+- [ ] File size validation
+- [ ] Deleting old threads
+- [X] Bump system
