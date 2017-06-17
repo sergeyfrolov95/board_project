@@ -12,5 +12,7 @@ class ThreadAdmin(admin.ModelAdmin):
 admin.site.register(Thread, ThreadAdmin)
 admin.site.register(Post)
 
+# auth for admin
+# 127.0.0.1:8000/admin
 # username: sergey
 # password: qwerty123

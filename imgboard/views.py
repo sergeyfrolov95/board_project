@@ -44,6 +44,7 @@ class ThreadView(View):
 		return render(request, 'thread.html', context)
 
 	def post(self, request, **kwargs):
+		valid_bump_variants = ('bump', 'Bump', 'Bump', 'bump!')
 		form = self.post_form(request.POST, request.FILES)
 		if form.is_valid():
 			p = Post(post_text=form.cleaned_data['post_text'],
@@ -51,10 +52,9 @@ class ThreadView(View):
 			p.pic = request.FILES.get('picture', '')
 			p.save()
 			thread = get_object_or_404(Thread, pk=kwargs['thread_id'])
-			if p.post_text == 'bump' or p.post_text == 'Bump!' or p.post_text == 'Bump':
+			if p.post_text in valid_bump_variants:
 				thread.bump_thread += 1
 				thread.save()
-			print thread.bump_thread
 			return HttpResponseRedirect('/board/thread' + kwargs['thread_id'])
 		else:
 			return HttpResponseRedirect('/board/thread' + kwargs['thread_id'])
