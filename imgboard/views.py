@@ -19,6 +19,7 @@ class IndexView(View):
 		}
 		return render(request, 'index.html', context)
 
+
 	def post(self, request):
 		form = self.thread_form(request.POST)
 		if form.is_valid():

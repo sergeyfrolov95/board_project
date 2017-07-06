@@ -1,26 +1,34 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'imgboard/index_style.css' %}" </>
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>imgboard</title>
+  </head>
+  <body>
+  {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'imgboard/index_style.css' %}" </>
 
-<div class="body">
-<div class="header">
-   <p>{{ "Welcome to the board. Create your own theme or chose one from list." }}</p>
-</div>
-<div class="body-content">
-<div>
-  <form method="post">
-    {% csrf_token %}
-    {{ form }}
-   <input type="submit" value="Create"/>
- </form=>
-</div>
-{% if thread_list %}
-    <div>
-    {% for thread in thread_list %}
-        <div id="thread_list"><a href="{% url 'imgboard:thread' thread.id %}">{{ thread.thread_name }}</a></div>
-    {% endfor %}
-    </div>
-{% else %}
-    <p>No threads are available.</p>
-{% endif %}
-</div>
-</div>
+    <div class="body">
+      <div class="header">
+        <p>{{ "Welcome to the board. Create your own theme or chose one from list." }}</p>
+      </div>
+      <div class="body-content">
+        <div>
+          <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Create"/>
+          </form=>
+        </div>
+        {% if thread_list %}
+        <div>
+          {% for thread in thread_list %}
+            <div id="thread_list"><a href="{% url 'imgboard:thread' thread.id %}">{{ thread.thread_name }}</a></div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <p>No threads are available.</p>
+          {% endif %}
+      </div>
+      </div>
+    </body>
+</html>

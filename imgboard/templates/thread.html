@@ -1,25 +1,32 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'imgboard/thread_style.css' %}" </>
-
-{% load staticfiles %}
-<div class="body">
-<div class="header"><p>{{ thread.thread_name }}</p></div>
-<a href="{% url 'imgboard:index' %}">Back to threads</a>
-<div>
-	<form method="post" enctype="multipart/form-data">
-  	{% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Send" />
-  </form>
-</div>
-<ul>
-{% for post in thread.post_set.all %}
-	<h4>{{ post.date_published }}</h4>
-	<h3>{{ post.post_text }}</h3>
-	{% if post.pic %}
-		<img src="{{ post.pic.url }}">
-  {% endif %}
-<h4>---------------------------------</h4>
-{% endfor %}
-</ul>
-</div>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>/thread/: {{ thread.thread_name }}</title>
+	</head>
+	<body>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'imgboard/thread_style.css' %}" </>
+		{% load staticfiles %}
+		<div class="body">
+			<div class="header"><p>{{ thread.thread_name }}</p></div>
+			<a href="{% url 'imgboard:index' %}">Back to threads</a>
+			<div>
+				<form method="post" enctype="multipart/form-data">
+			  	{% csrf_token %}
+			    {{ form }}
+			    <input type="submit" value="Send" />
+			  </form>
+			</div>
+			<ul>
+			{% for post in thread.post_set.all %}
+				<h4>{{ post.date_published }}</h4>
+				<h3>{{ post.post_text }}</h3>
+				{% if post.pic %}
+					<img src="{{ post.pic.url }}">
+			  {% endif %}
+			<h4>---------------------------------</h4>
+			{% endfor %}
+			</ul>
+		</div>
+	</body>
+</html>

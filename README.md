@@ -38,3 +38,4 @@ You can offer one of threads on the top of thread list by using keyword "bump" (
 - [X] Deleting old threads
 - [X] Bump system
 - [ ] Authorization
+- [ ] More powerful DB
