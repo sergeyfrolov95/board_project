@@ -24,10 +24,9 @@ class IndexView(View):
 		if form.is_valid():
 			t = Thread(thread_name=form.cleaned_data['thread_name'])
 			t.save()
-			return HttpResponseRedirect('/board')
-		else:
-			return HttpResponseRedirect('/board')
-
+			past = timezone.datetime.today() - timezone.timedelta(days=14)
+			Thread.objects.filter(date_created__lte=past).delete()
+		return HttpResponseRedirect('/board')
 
 
 class ThreadView(View):
@@ -52,9 +51,7 @@ class ThreadView(View):
 			p.pic = request.FILES.get('picture', '')
 			p.save()
 			thread = get_object_or_404(Thread, pk=kwargs['thread_id'])
-			if p.post_text in valid_bump_variants:
+			if p.post_text in valid_bump_variants and Post.objects.filter(thread=kwargs['thread_id']).count() < 100:
 				thread.bump_thread += 1
 				thread.save()
-			return HttpResponseRedirect('/board/thread' + kwargs['thread_id'])
-		else:
-			return HttpResponseRedirect('/board/thread' + kwargs['thread_id'])
+		return HttpResponseRedirect('/board/thread' + kwargs['thread_id'])

@@ -1,8 +1,10 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils import timezone
 
 class Thread(models.Model):
+	date_created = models.DateTimeField(default=timezone.now())
 	thread_name = models.CharField(max_length=50)
 	bump_thread = models.IntegerField(default=0)
 
