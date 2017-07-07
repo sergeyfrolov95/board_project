@@ -1,28 +1,31 @@
-body {
-  background: white url("images/backim.jpg");
-  background-size: 100%;
-  -moz-background-size: 100%;
-  -webkit-background-size: 100%;
-  -o-background-size: 100%;
-  background-attachment: fixed;
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
 }
 
-a {
-  color: green;
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 450px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  padding-top: 20px;
+  background-color: #f1f1f1;
+  height: 100%;
 }
 
-p {
-  margin-left: 2%;
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
 }
 
-.header {
-  background-color: green;
-  color:white;
-  text-align:left;
-  height: 110px;
-  font-size: 230%;
-}
-
-.body {
-  font-family: Helvetica Narrow, sans-serif;
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;}
 }
