@@ -1,4 +1,4 @@
-# Imageboard written on Django framework.
+# Imageboard on Django framework.
 
 This imageboard approach to discuss news or other different things. In threads (themes to discuss) you can post comments and share pictures in messages.
 
@@ -32,10 +32,9 @@ You can offer one of threads on the top of thread list by using keyword "bump" (
 
 ## TODO
 
-- [ ] Better UI
+- [X] Better UI
 - [ ] File type validation
 - [ ] File size validation
 - [X] Deleting old threads
 - [X] Bump system
-- [ ] Authorization
 - [ ] More powerful DB
